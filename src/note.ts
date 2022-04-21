@@ -25,19 +25,14 @@ export class Note {
         switch(this.color) {
             case 'Rojo':
                 return chalk.red(this.title)
-                break;
             case 'Verde':
                 return chalk.green(this.title)
-                break;
             case 'Azul':
                 return chalk.blue(this.title)
-                break;
             case 'Amarillo':
                 return chalk.yellow(this.title)
-                break;
             default:
                 return chalk.red('Color erroneo')
-                break;
         }
     }
 }
