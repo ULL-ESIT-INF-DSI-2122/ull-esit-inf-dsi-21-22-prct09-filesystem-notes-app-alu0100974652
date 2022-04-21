@@ -48,7 +48,7 @@ export class ManagerNote {
         if(fs.existsSync(rute)) {
             console.log(chalk.green(`Bienvenido ${this.user}`))
             if(fs.existsSync(fileRute)) {
-                console.log(chalk.red(`Lo sentimos ${this.user}, el titulo de la nota no esta disponible, intentelo con otro titulo`))
+                console.log(chalk.red(`Lo sentimos ${this.user}, el titulo de la nota: ${addNoteToUser.getTitle()} no esta disponible, intentelo con otro titulo`))
             } else {
                 fs.writeFile(fileRute, `{\n\t"title": "${addNoteToUser.getTitle()}",\n\t"body": "${addNoteToUser.getBody()}",\n\t"color": "${addNoteToUser.getColor()}"\n}`, function(err) {
                     if(err) {
@@ -57,6 +57,18 @@ export class ManagerNote {
                     console.log(chalk.green('New note added!'))
                 });
             }
+        }
+    }
+
+    editNote(title: string, newtitle: string, newBody: string, newColor: string) {
+        const fileRute: string = './src/database/' + this.user + '/' + title + '.json'
+        if(fs.existsSync(fileRute)) {
+            fs.writeFile(fileRute, `{\n\t"title": "${newtitle}",\n\t"body": "${newBody}",\n\t"color": "${newColor}"\n}`, function(err) {
+                if(err) {
+                    return console.log(err)
+                }
+                console.log(chalk.green(`Note ${title} edited`))
+            });
         }
     }
 }

@@ -12,6 +12,5 @@ const note5 = new note_1.Note('', '', '');
 //console.log(note3.showTitle())
 //console.log(note4.showTitle())
 //console.log(note5.showTitle())
-const userNote = new managerNote_1.ManagerNote('usuario1', [note1, note2]);
-userNote.addNote(note3);
-userNote.addNote(note3);
+const userNote = new managerNote_1.ManagerNote('usuario1', []);
+userNote.editNote('Nota3', 'Nota3Editada', 'Esto es para comprobar que se edita', 'Amarillo');

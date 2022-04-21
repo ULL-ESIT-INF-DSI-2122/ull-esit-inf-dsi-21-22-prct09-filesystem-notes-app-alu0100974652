@@ -12,6 +12,6 @@ const note5 = new Note('', '', '')
 //console.log(note4.showTitle())
 //console.log(note5.showTitle())
 
-const userNote = new ManagerNote('usuario1', [note1, note2])
+const userNote = new ManagerNote('usuario1', [])
 
-userNote.addNote(note3)
+userNote.editNote('Nota3', 'Nota3Editada', 'Esto es para comprobar que se edita', 'Amarillo')
