@@ -2,8 +2,10 @@ import { Note } from "./note";
 import { ManagerNote } from "./managerNote";
 import * as yargs from 'yargs';
 import * as chalk from 'chalk';
-import { type } from "os";
 
+/**
+ * Yargs de Add Note
+ */
 yargs.command({
   command: 'add',
   describe: 'Add new note',
@@ -40,6 +42,9 @@ yargs.command({
   }
 })
 
+/**
+ * Yargs de Edit Note
+ */
 yargs.command({
   command: 'edit',
   describe: 'Edit note',
@@ -80,6 +85,9 @@ yargs.command({
   }
 })
 
+/**
+ * Yargs de Remove Note
+ */
 yargs.command({
     command: 'remove',
     describe: 'Eliminar una nota',
@@ -105,6 +113,9 @@ yargs.command({
     },
 });
 
+/**
+ * Yargs de List Notes
+ */
 yargs.command({
   command: 'list',
   describe: 'List Notes of a User',
@@ -125,6 +136,9 @@ yargs.command({
   }
 })
 
+/**
+ * Yargs Read Notes
+ */
 yargs.command({
   command: 'read',
   describe: 'Read Notes of a User',

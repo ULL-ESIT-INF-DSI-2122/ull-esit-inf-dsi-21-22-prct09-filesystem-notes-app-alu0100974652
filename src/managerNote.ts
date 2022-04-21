@@ -3,11 +3,22 @@ import * as chalk from 'chalk';
 import * as fs from 'fs';
 
 export class ManagerNote {
+    /**
+     * Constructor
+     * @param user usuario que implementará los métodos
+     */
     constructor(private user: string) {}
-    
+    /**
+     * GetterUser
+     * @returns devuelve el usuario
+     */
     getUser() {
         return this.user
     }    
+    /**
+     * Agrega un nueva nota al directorio de notas del usuario
+     * @param addNoteToUser nota a agregar
+     */
     addNote(addNoteToUser: Note) {
         const rute: string = './src/database/' + this.user
         const fileRute: string =  './src/database/' + this.user + '/' + addNoteToUser.getTitle() + '.json'
@@ -26,6 +37,13 @@ export class ManagerNote {
             console.log(chalk.green('New note added!'))
         }
     }
+    /**
+     * Edita una nota con sus nuevos parámetros
+     * @param title titulo antiguo de la nota
+     * @param newtitle nuevo titulo de la nota
+     * @param newBody nuevo cuerpo de la nota
+     * @param newColor nuevo color de la nota
+     */
     editNote(title: string, newtitle: string, newBody: string, newColor: string) {
         const fileRute: string = './src/database/' + this.user + '/' + title + '.json'
         if(fs.existsSync(fileRute)) {
@@ -33,6 +51,10 @@ export class ManagerNote {
             console.log(chalk.green(`Note ${title} edited`))
         }
     }
+    /**
+     * Elimina una nota del directorio del usuario a través del titulo
+     * @param title titulo de la nota
+     */
     removeNote(title: string) {
         const fileRute: string = './src/database/' + this.user + '/' + title + '.json';
         if(fs.existsSync(fileRute)) {
@@ -42,6 +64,9 @@ export class ManagerNote {
             console.log(chalk.red('No se ha encontrado la nota, intentelo con otro titulo'))            
         }
     }
+    /**
+     * Lista las notas del directorio del usuario
+     */
     listNotes() {
         const rute: string = './src/database/' + this.user
         if(fs.existsSync(rute)) {
@@ -78,6 +103,10 @@ export class ManagerNote {
             }
         }
     }
+    /**
+     * Lee la nota del usuario a través del titulo y lo imprime por consola
+     * @param titleRead titulo de la nota
+     */
     readNotes(titleRead: string) {
         const fileRute: string = './src/database/' + this.user + '/' + titleRead + '.json'
         if(fs.existsSync(fileRute)) {
