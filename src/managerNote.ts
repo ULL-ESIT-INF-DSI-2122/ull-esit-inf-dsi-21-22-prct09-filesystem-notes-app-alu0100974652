@@ -57,4 +57,14 @@ export class ManagerNote {
             console.log(chalk.green(`Note ${title} edited`))
         }
     }
+
+    removeNote(title: string) {
+        const fileRute: string = './src/database/' + this.user + '/' + title + '.json';
+        if(fs.existsSync(fileRute)) {
+            fs.rmSync(fileRute)
+            console.log(chalk.green('Note removed!'))
+        } else {
+            console.log(chalk.red('No se ha encontrado la nota, intentelo con otro titulo'))            
+        }
+    }
 }

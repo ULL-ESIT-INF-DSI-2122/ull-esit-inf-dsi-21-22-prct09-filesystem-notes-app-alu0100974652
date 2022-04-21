@@ -15,3 +15,5 @@ const note5 = new Note('', '', '')
 const userNote = new ManagerNote('usuario1', [])
 
 userNote.editNote('Nota3', 'Nota3Editada', 'Esto es para comprobar que se edita', 'Amarillo')
+userNote.removeNote('Nota215')
+userNote.removeNote('Nota3')

@@ -14,3 +14,5 @@ const note5 = new note_1.Note('', '', '');
 //console.log(note5.showTitle())
 const userNote = new managerNote_1.ManagerNote('usuario1', []);
 userNote.editNote('Nota3', 'Nota3Editada', 'Esto es para comprobar que se edita', 'Amarillo');
+userNote.removeNote('Nota215');
+userNote.removeNote('Nota3');
