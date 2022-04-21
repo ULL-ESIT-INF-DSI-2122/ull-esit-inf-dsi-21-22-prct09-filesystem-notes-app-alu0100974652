@@ -10,5 +10,9 @@ describe('Tests from Note class', () => {
     it('Se obtiene el titulo de la nota', () => {
         expect(note1.getTitle()).to.be.eq('Nota1')
     })    
+    it('Se obtiene el titulo de la nota', () => {
+        expect(note1.getBody()).to.be.eq('Esto es el cuerpo de la nota 1')
+    })   
+    
 })
 
