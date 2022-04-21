@@ -105,4 +105,24 @@ yargs.command({
         }
     },
 });
+yargs.command({
+    command: 'list',
+    describe: 'List Notes of a User',
+    builder: {
+        user: {
+            describe: 'User Name',
+            demandOption: true,
+            type: 'string',
+        },
+    },
+    handler(argv) {
+        if (typeof argv.user === 'string') {
+            const managerNote = new managerNote_1.ManagerNote(argv.user);
+            managerNote.listNotes();
+        }
+        else {
+            console.log(chalk.red('Argumentos no válidos'));
+        }
+    }
+});
 yargs.parse();

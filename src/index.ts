@@ -2,6 +2,7 @@ import { Note } from "./note";
 import { ManagerNote } from "./managerNote";
 import * as yargs from 'yargs';
 import * as chalk from 'chalk';
+import { type } from "os";
 
 yargs.command({
   command: 'add',
@@ -102,6 +103,26 @@ yargs.command({
         console.log(chalk.red('Argumentos no válidos'));
       }
     },
-  });
+});
+
+yargs.command({
+  command: 'list',
+  describe: 'List Notes of a User',
+  builder: {
+    user: {
+      describe: 'User Name',
+      demandOption: true,
+      type: 'string',
+    },
+  },
+  handler(argv) {
+    if(typeof argv.user === 'string') {
+      const managerNote = new ManagerNote(argv.user);
+      managerNote.listNotes() 
+    } else {
+      console.log(chalk.red('Argumentos no válidos'))
+    }
+  }
+})
 
 yargs.parse()

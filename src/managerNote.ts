@@ -42,4 +42,40 @@ export class ManagerNote {
             console.log(chalk.red('No se ha encontrado la nota, intentelo con otro titulo'))            
         }
     }
+    listNotes() {
+        const rute: string = './src/database/' + this.user
+        if(fs.existsSync(rute)) {
+            const notesA: string[] = []
+            fs.readdirSync(rute).forEach((notes) => {
+                notesA.push(notes)
+            })
+            if(notesA.length == 0) {
+                console.log(chalk.red("El usuario no tiene notas"))
+            } else {
+                notesA.forEach((note) => {
+                    fs.readFile(`./src/database/${this.user}/${note}`, (err, data) => {
+                        if(err) {
+                            console.log(chalk.red('Read error'))
+                        } else {
+                            const notesAux = JSON.parse(data.toString())
+                            switch(notesAux.color) {
+                                case 'Rojo':
+                                    console.log(chalk.red(notesAux.title))
+                                    break;
+                                case 'Verde':
+                                    console.log(chalk.green(notesAux.title))
+                                    break;
+                                case 'Azul':
+                                    console.log(chalk.blue(notesAux.title))
+                                    break;
+                                case 'Amarillo':
+                                    console.log(chalk.yellow(notesAux.title))
+                                    break;
+                            }
+                        }
+                    })
+                })
+            }
+        }
+    }
 }
