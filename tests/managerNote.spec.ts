@@ -3,7 +3,6 @@ import { expect } from 'chai'
 import { Note } from '../src/note'
 import { ManagerNote } from '../src/managerNote'
 import * as fs from 'fs'
-import * as chalk from 'chalk'
 
 const note1 = new Note('Nota1', 'Esto es el cuerpo de la nota 1', 'Rojo')
 const note2 = new Note('Nota2', 'Esto es el cuerpo de la nota 2', 'Verde')
