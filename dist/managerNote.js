@@ -17,23 +17,15 @@ class ManagerNote {
                     console.log(chalk.red(`Lo sentimos ${this.user}, el titulo de la nota ${notes.getTitle()} no esta disponible, intentelo con otro titulo`));
                 }
                 else {
-                    fs.writeFile(filesRutes, `{\n\t"title": "${notes.getTitle()}",\n\t"body": "${notes.getBody()}",\n\t"color": "${notes.getColor()}"\n}`, function (err) {
-                        if (err) {
-                            return console.log(err);
-                        }
-                        console.log(chalk.green('Notas del constructor añadidas'));
-                    });
+                    fs.writeFileSync(filesRutes, `{\n\t"title": "${notes.getTitle()}",\n\t"body": "${notes.getBody()}",\n\t"color": "${notes.getColor()}"\n}`);
+                    console.log(chalk.green('Notas del constructor añadidas'));
                 }
             }
             else {
                 console.log(chalk.green(`Creando la estructura personal para el usuario: ${this.user} para gestionar sus notas `));
                 fs.mkdirSync(rute);
-                fs.writeFile(filesRutes, `{\n\t"title": "${notes.getTitle()}",\n\t"body": "${notes.getBody()}",\n\t"color": "${notes.getColor()}"\n}`, function (err) {
-                    if (err) {
-                        return console.log(err);
-                    }
-                    console.log(chalk.green('Notas del constructor añadidas'));
-                });
+                fs.writeFileSync(filesRutes, `{\n\t"title": "${notes.getTitle()}",\n\t"body": "${notes.getBody()}",\n\t"color": "${notes.getColor()}"\n}`);
+                console.log(chalk.green('Notas del constructor añadidas'));
             }
         });
     }
@@ -52,24 +44,16 @@ class ManagerNote {
                 console.log(chalk.red(`Lo sentimos ${this.user}, el titulo de la nota: ${addNoteToUser.getTitle()} no esta disponible, intentelo con otro titulo`));
             }
             else {
-                fs.writeFile(fileRute, `{\n\t"title": "${addNoteToUser.getTitle()}",\n\t"body": "${addNoteToUser.getBody()}",\n\t"color": "${addNoteToUser.getColor()}"\n}`, function (err) {
-                    if (err) {
-                        return console.log(err);
-                    }
-                    console.log(chalk.green('New note added!'));
-                });
+                fs.writeFileSync(fileRute, `{\n\t"title": "${addNoteToUser.getTitle()}",\n\t"body": "${addNoteToUser.getBody()}",\n\t"color": "${addNoteToUser.getColor()}"\n}`);
+                console.log(chalk.green('New note added!'));
             }
         }
     }
     editNote(title, newtitle, newBody, newColor) {
         const fileRute = './src/database/' + this.user + '/' + title + '.json';
         if (fs.existsSync(fileRute)) {
-            fs.writeFile(fileRute, `{\n\t"title": "${newtitle}",\n\t"body": "${newBody}",\n\t"color": "${newColor}"\n}`, function (err) {
-                if (err) {
-                    return console.log(err);
-                }
-                console.log(chalk.green(`Note ${title} edited`));
-            });
+            fs.writeFileSync(fileRute, `{\n\t"title": "${newtitle}",\n\t"body": "${newBody}",\n\t"color": "${newColor}"\n}`);
+            console.log(chalk.green(`Note ${title} edited`));
         }
     }
 }
