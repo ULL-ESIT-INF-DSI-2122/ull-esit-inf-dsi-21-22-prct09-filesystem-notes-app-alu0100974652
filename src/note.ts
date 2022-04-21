@@ -35,4 +35,18 @@ export class Note {
                 return chalk.red('Color erroneo')
         }
     }
+    showBody() {
+        switch(this.color) {
+            case 'Rojo':
+                return chalk.red(this.body)
+            case 'Verde':
+                return chalk.green(this.body)
+            case 'Azul':
+                return chalk.blue(this.body)
+            case 'Amarillo':
+                return chalk.yellow(this.body)
+            default:
+                return chalk.red('Color erroneo')
+        }
+    }
 }

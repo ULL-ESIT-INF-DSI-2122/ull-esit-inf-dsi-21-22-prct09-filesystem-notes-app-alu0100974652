@@ -41,6 +41,13 @@ describe('Tests from Note class', () => {
         expect(note3.showTitle()).to.be.eq(chalk.blue('Nota3'))
         expect(note4.showTitle()).to.be.eq(chalk.yellow('Nota4'))
         expect(note5.showTitle()).to.be.eq(chalk.red('Color erroneo'))
+    })  
+    it('Se muestra el cuerpo de las notas con su respectivo color', () => {
+        expect(note1.showBody()).to.be.eq(chalk.red('Este cuerpo ha sido cambiado en la nota 1'))
+        expect(note2.showBody()).to.be.eq(chalk.green('Esto es el cuerpo de la nota 2'))
+        expect(note3.showBody()).to.be.eq(chalk.blue('Esto es el cuerpo de la nota 3'))
+        expect(note4.showBody()).to.be.eq(chalk.yellow('Esto es el cuerpo de la nota 4'))
+        expect(note5.showBody()).to.be.eq(chalk.red('Color erroneo'))
     })    
 })
 
