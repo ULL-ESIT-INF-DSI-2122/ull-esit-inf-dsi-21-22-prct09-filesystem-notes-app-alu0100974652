@@ -5,5 +5,8 @@ export class Note {
 
     getTitle() {
         return this.title
+    }    
+    getBody() {
+        return this.body
     }
 }
