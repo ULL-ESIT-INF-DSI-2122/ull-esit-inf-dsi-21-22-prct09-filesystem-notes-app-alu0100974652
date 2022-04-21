@@ -64,25 +64,55 @@ class ManagerNote {
                             console.log(chalk.red('Read error'));
                         }
                         else {
-                            const notesAux = JSON.parse(data.toString());
-                            switch (notesAux.color) {
+                            const notesJson = JSON.parse(data.toString());
+                            switch (notesJson.color) {
                                 case 'Rojo':
-                                    console.log(chalk.red(notesAux.title));
+                                    console.log(chalk.red(notesJson.title));
                                     break;
                                 case 'Verde':
-                                    console.log(chalk.green(notesAux.title));
+                                    console.log(chalk.green(notesJson.title));
                                     break;
                                 case 'Azul':
-                                    console.log(chalk.blue(notesAux.title));
+                                    console.log(chalk.blue(notesJson.title));
                                     break;
                                 case 'Amarillo':
-                                    console.log(chalk.yellow(notesAux.title));
+                                    console.log(chalk.yellow(notesJson.title));
                                     break;
                             }
                         }
                     });
                 });
             }
+        }
+    }
+    readNotes(titleRead) {
+        const fileRute = './src/database/' + this.user + '/' + titleRead + '.json';
+        if (fs.existsSync(fileRute)) {
+            fs.readFile(fileRute, (err, data) => {
+                if (err) {
+                    console.log(chalk.red('Read Error'));
+                }
+                else {
+                    const notesJson = JSON.parse(data.toString());
+                    switch (notesJson.color) {
+                        case 'Rojo':
+                            console.log(chalk.red(`${notesJson.title}\n${notesJson.body}`));
+                            break;
+                        case 'Verde':
+                            console.log(chalk.green(`${notesJson.title}\n${notesJson.body}`));
+                            break;
+                        case 'Azul':
+                            console.log(chalk.blue(`${notesJson.title}\n${notesJson.body}`));
+                            break;
+                        case 'Amarillo':
+                            console.log(chalk.yellow(`${notesJson.title}\n${notesJson.body}`));
+                            break;
+                    }
+                }
+            });
+        }
+        else {
+            console.log(chalk.red('La nota no existe, intentelo con otro titulo'));
         }
     }
 }

@@ -125,4 +125,29 @@ yargs.command({
         }
     }
 });
+yargs.command({
+    command: 'read',
+    describe: 'Read Notes of a User',
+    builder: {
+        user: {
+            describe: 'User Name',
+            demandOption: true,
+            type: 'string',
+        },
+        title: {
+            describe: 'Título de la nota',
+            demandOption: true,
+            type: 'string',
+        },
+    },
+    handler(argv) {
+        if (typeof argv.user === 'string' && typeof argv.title === 'string') {
+            const managerNote = new managerNote_1.ManagerNote(argv.user);
+            managerNote.readNotes(argv.title);
+        }
+        else {
+            console.log(chalk.red('Argumentos no válidos'));
+        }
+    }
+});
 yargs.parse();
