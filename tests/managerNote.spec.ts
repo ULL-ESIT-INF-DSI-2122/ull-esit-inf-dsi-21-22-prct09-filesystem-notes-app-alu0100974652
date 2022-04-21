@@ -12,6 +12,7 @@ const note4 = new Note('Nota4', 'Esto es el cuerpo de la nota 4', 'Amarillo')
 
 const userNote = new ManagerNote('User1')
 const userWithoutNote = new ManagerNote('usuario1')
+const userError = new ManagerNote('usuario3')
 
 describe('Tests from ManagerNote class', () => {
     it('Se espera que userNote sea un objeto de la clase ManagerNote', () => {
@@ -28,7 +29,7 @@ describe('Tests from ManagerNote class', () => {
         expect(userNote.addNote(note4))
     })
     it('Existe el método editNote', () => {
-        expect(userNote.editNote('Nota1', 'Nota1 Editada', 'Cambiando el cuerpo de la nota', 'Azul'))
+        expect(userNote.editNote('Nota1', 'Nota1 Editada', 'Cambiando el cuerpo de la nota', 'Rojo'))
         expect(userWithoutNote.editNote('Nota1', 'Nota1 Editada', 'Cambiando el cuerpo de la nota', 'Azul'))
     })
     it('Existe el método removeNote', () => {
@@ -37,16 +38,20 @@ describe('Tests from ManagerNote class', () => {
         expect(userWithoutNote.removeNote('Nota1 Editada'))
     })
     it('Existe el método listNotes', () => {
+        userNote.addNote(note1)
         expect(userNote.listNotes())
         expect(userWithoutNote.listNotes())
+        expect(userError.listNotes())
     })
     it('Existe el método readNotes', () => {
+        userNote.addNote(note1)
         expect(userNote.readNotes('Nota1'))
         expect(userNote.readNotes('Nota1 Editada'))
         expect(userNote.readNotes('Nota2'))
         expect(userNote.readNotes('Nota3'))
         expect(userNote.readNotes('Nota4'))
         expect(userWithoutNote.readNotes(''))
+        expect(userError.readNotes(''))
     })
 })
 
