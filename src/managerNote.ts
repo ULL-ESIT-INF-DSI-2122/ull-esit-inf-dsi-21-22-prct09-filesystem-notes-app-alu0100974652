@@ -49,6 +49,8 @@ export class ManagerNote {
         if(fs.existsSync(fileRute)) {
             fs.writeFileSync(fileRute, `{\n\t"title": "${newtitle}",\n\t"body": "${newBody}",\n\t"color": "${newColor}"\n}`)
             console.log(chalk.green(`Note ${title} edited`))
+        } else {
+            console.log(chalk.red(`La nota ${title} no existe en el directorio personal del ${this.user}`))
         }
     }
     /**
